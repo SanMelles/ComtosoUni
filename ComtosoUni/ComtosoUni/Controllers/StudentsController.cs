@@ -1,6 +1,8 @@
 ﻿using ComtosoUni.Data;
+using ComtosoUni.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace ComtosoUni.Controllers
 {
@@ -40,7 +42,34 @@ namespace ComtosoUni.Controllers
                 return NotFound();
             }
 
-            return View();
+            return View(student);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Create(Student student)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Add(student);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " + 
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+            }
+            return View(student);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+            { return View(); }
     }
 }
