@@ -1,5 +1,5 @@
 using ComtosoUni.Data;
-using ContosoUniversity.Data;
+using ComtosoUniversity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

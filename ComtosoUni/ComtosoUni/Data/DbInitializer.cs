@@ -1,7 +1,7 @@
 ﻿using ComtosoUni.Data;
 using ComtosoUni.Models;
 
-namespace ContosoUniversity.Data
+namespace ComtosoUniversity.Data
 {
     public static class DbInitializer
     {
